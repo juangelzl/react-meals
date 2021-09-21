@@ -66,7 +66,7 @@ const Cart = (props) => {
 
     sendMealRequest(
       {
-        url: "https://react-http-2f39f-default-rtdb.firebaseio.com/orders.json",
+        url: "",
         method: "POST",
         headers: {
           "Content-Type": "application/json",

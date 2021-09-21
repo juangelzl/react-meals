@@ -24,7 +24,7 @@ const AvailableMeals = () => {
     };
     fetchMeals(
       {
-        url: "https://react-http-2f39f-default-rtdb.firebaseio.com/meals.json",
+        url: "",
       },
       transformMeals
     );
