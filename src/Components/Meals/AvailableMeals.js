@@ -31,20 +31,25 @@ const AvailableMeals = () => {
   }, [fetchMeals]);
 
   // if (meals) {
-    const mealsList = meals.map((meal) => (
-      <MealItem
-        key={meal.id}
-        id={meal.id}
-        name={meal.name}
-        description={meal.description}
-        price={meal.price}
-      />
-    ));
+  const mealsList = meals.map((meal) => (
+    <MealItem
+      key={meal.id}
+      id={meal.id}
+      name={meal.name}
+      description={meal.description}
+      price={meal.price}
+    />
+  ));
   // }
+  if (isLoading) {
+    return <div className={classes.mealsLoading}><h3>Loading meals...</h3></div>;
+  }
+  if (error) {
+    return <div className={classes.mealsError}><h3>{error}</h3></div>;
+  }
   return (
     <section className={classes.meals}>
       <Card>
-        {isLoading && <div>Loading meals...</div>}
         {error && <div>{error}</div>}
         <ul>{mealsList && mealsList}</ul>
       </Card>

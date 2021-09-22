@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
-import Header from "./Components/Layout/Header/Header";
-import Meals from "./Components/Home/Meals/Meals";
-import Cart from "./Components/Home/Cart/Cart";
-import CartProvider from "./store/CartProvider";
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-  const onShowCart = () => {
-    setShowCart(true);
+  const [cartIsShown, setCartIsShown] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShown(true);
   };
-  const cartHandler = () => {
-    setShowCart(false);
+
+  const hideCartHandler = () => {
+    setCartIsShown(false);
   };
+
   return (
     <CartProvider>
-      {showCart && <Cart onClose={cartHandler}></Cart>}
-      <Header onShowCart={onShowCart}></Header>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>
